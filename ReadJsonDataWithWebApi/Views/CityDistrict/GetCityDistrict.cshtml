@@ -1,0 +1,24 @@
+﻿
+
+@{
+    ViewBag.Title = "GetCityDistrict";
+}
+
+<h2>GetCityDistrict</h2>
+<input type="button" id="ililceGetir" value="İl - İlçe Listele" />
+<div id="ililceler"></div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#ililceGetir").click(function () {
+            $.getJSON('../api/citydistrictapi').done(function (data) {
+                var citydistricts = "";
+                $.each(data, function (key, citydistrict) {
+                    citydistricts += citydistrict.bolge + " " + citydistrict.il + " " + citydistrict.ilce + "<br/>";
+                });
+                $("#ililceler").html(citydistricts);
+            });
+        });
+    });
+</script>
+
